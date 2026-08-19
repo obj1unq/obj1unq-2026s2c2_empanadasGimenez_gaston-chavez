@@ -3,6 +3,7 @@ object galvan {
     var sueldo = 15000
     var deuda() = 0
     var dinero() = 0
+    //saldo = 0
 
     method sueldo() {
       return sueldo
@@ -14,22 +15,28 @@ object galvan {
 
     method gastar(cuanto){
       deuda = deuda + cuanto
-    }
-
-    method deudaCobrada() {
-      if (deuda)
+      //saldo -= cuanto
     }
 
     method deuda(){
       return deuda
+      //saldo.min(0).abs()
     }
 
     method dinero(){
       return dinero
+      //saldo.max()
     }
 
     method cobrarSueldo() {
-      
+      if (deuda <= sueldo){
+        dinero = sueldo - deuda
+        deuda = 0
+      }
+      else{
+        deuda = deuda - sueldo
+        dinero = 0
+      }
     }
 }
 
